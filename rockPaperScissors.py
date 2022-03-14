@@ -27,13 +27,16 @@ while True:
     elif choice == "s":
         print("Scissors versus ....")
 
-    computer_rand = random.randint(1, 3)  # Gets the computer choice
-    if computer_rand == 1:
-        comp_choice = "r"
-    elif computer_rand == 2:
-        comp_choice = "s"
-    else:
-        comp_choice = "p"
+    list_choice = list(["r", "p", "s"])
+    comp_choice = random.choice(list_choice)  # Gets the computer choice
+    # You could also use this other option
+    # computer_rand = random.randint(1,3)
+    # if computer_rand == 1:
+    #   comp_choice = "r"
+    # elif computer_rand == 2:
+    #   comp_choice = "s"
+    # else:
+    #   comp_choice = "p"
 
     if comp_choice == choice:
         if choice == "s":
