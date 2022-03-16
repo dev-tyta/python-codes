@@ -10,7 +10,6 @@ while True:
     num_mins.append(num)
 print(f"{mus_name} and {num_mins} ")
 
-mus_min = {}
-mus_name = mus_min.keys()
-num_mins = mus_min.values()
-print(mus_min)
+# keys, values = tuple(mus_name), tuple(num_mins)
+# mus_min = {keys:values}
+# print(mus_min)
