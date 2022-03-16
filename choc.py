@@ -1,5 +1,7 @@
 # Conway's Game of Life
-import random, time, copy
+import copy
+import random
+import time
 
 width = 60
 height = 20
@@ -21,7 +23,7 @@ while True:
 
     for y in range(width):
         for x in range(width):
-            print(current_cell[x][y], end='')
+            print(current_cell[x][y], end=' ')
         print()
 
     for x in range(width):
@@ -44,4 +46,15 @@ while True:
             numNeighbors += 1
         elif current_cell[leftcoord][belowcoord] == "#":
             numNeighbors += 1
-        elif
+        elif current_cell[x][belowcoord] == "#":
+            numNeighbors += 1
+        elif current_cell[rightcoord][belowcoord] == "#":
+            numNeighbors += 1
+
+        if current_cell[x][y] == "#" and (numNeighbors == 2 or numNeighbors == 3):
+            next_cells[x][y] = "#"
+        elif current_cell[x][y] == " " and numNeighbors == 3:
+            numNeighbors[x][y] = "#"
+        else:
+            next_cells[x][y] = " "
+    time.sleep(1)
