@@ -1,5 +1,5 @@
 from sign_up import user_name, confirm_password
-from game import get_input2
+from game import get_input
 
 while True:
     print("User Login Page")
@@ -14,4 +14,4 @@ while True:
     else:
         print("Wrong Username!!! Retry")
 print("Welcome!!!!")
-get_input2()
+get_input()
