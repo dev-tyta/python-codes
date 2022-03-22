@@ -17,4 +17,4 @@ while True:
             print("Password doesn't match")
 
 print(f"Welcome {user_name}!!!!")
-game.get_input2()
+game.get_input()
