@@ -1,6 +1,7 @@
 spam = ['apples', 'bananas', 'tofu', 'cats']
 span = ["Testimony", "Oladunni", "Collins "]
 
+
 def listarg(lst):
     a = " "
     for i in range(0, len(lst)):
