@@ -7,4 +7,9 @@ for exp_num in range(10000):  # Test to be carried out 10000 times
         chance = " "
         choi = random.choice(choice)  # Gets a random choice between Head and Tail
         chance += choi
-    print(chance)
+    for i in range(len(chance)):
+        if i == i + 1 == i + 2 == i + 3 == i + 4 == i + 5 == "H":
+            numOfStreaks += 1
+        if i == i + 1 == i + 2 == i + 3 == i + 4 == i + 5 == "T":
+            numOfStreaks += 1
+print(numOfStreaks)
