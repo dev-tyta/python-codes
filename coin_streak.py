@@ -35,5 +35,5 @@ for exp_num in range(1000):  # Test to be carried out 10000 times
     except IndexError:
         numOfStreaks = 0
 
-    print(numOfStreaks)
+#    print(numOfStreaks)
 print(f'Chance of streak: {numOfStreaks / 100}')
