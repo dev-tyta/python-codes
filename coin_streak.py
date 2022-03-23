@@ -36,4 +36,7 @@ for exp_num in range(1000):  # Test to be carried out 10000 times
         numOfStreaks = 0
 
 #    print(numOfStreaks)
-print(f'Chance of streak: {numOfStreaks / 100}%')
+if numOfStreaks == 0:
+    print("There is a little issue. Please re-run.")
+else:
+    print(f'Chance of streak: {numOfStreaks / 100}%')
