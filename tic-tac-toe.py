@@ -11,4 +11,18 @@ def print_board(board):
     print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'])
 
 
+turn = "X"
+for i in range(9):
+    print_board(ticBoard)
+    print(f"Turn for {turn}. You are allowed to pick a space to move to."
+          f"They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)"
+          f"mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)"
+          f"low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) ")
+    move = input("MOve to which space: ")
+    ticBoard[move] = turn
+    if turn == "X":
+        turn = "O"
+    else:
+        turn = "X"
+
 print_board(ticBoard)
