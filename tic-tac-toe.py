@@ -17,37 +17,43 @@ def print_board(board):
 
 
 def score_board():
-    print("Score Board@@")
+    print("Score Board")
     print(f"X : {wins_X}  |  O: {wins_O}")
 
 
-print("How many Games would you love to play....")
-game = input()
-turn = random.choice(["X", "O"])
-for i in range(9):
-    print_board(ticBoard)
-    print(f"Turn for {turn}. You are allowed to pick a space to move to."
-          f"They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)"
-          f"mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)"
-          f"low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) ")
-    move = input("MOve to which space: ")
-    ticBoard[move] = turn
-    if turn == "X":
-        turn = "O"
-    else:
-        turn = "X"
-
-    if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
-        winner = ticBoard["top_L"]
-        break
-    elif ticBoard["mid_L"] == ticBoard["mid_M"] == ticBoard["mid_R"] != " ":
-        winner = ticBoard["mid_L"]
-        break
-    elif ticBoard["low_L"] == ticBoard["low_M"] == ticBoard["low_R"] != " ":
-        winner = ticBoard["low_L"]
-        break
+def winner(board):
+    if board["top_L"] == board["top_M"] == board["top_R"] != " ":
+        winner = board["top_L"]
+    elif board["mid_L"] == board["mid_M"] == board["mid_R"] != " ":
+        winner = board["mid_L"]
+    elif board["low_L"] == board["low_M"] == board["low_R"] != " ":
+        winner = board["low_L"]
     else:
         print("No winner!! Replay")
 
-print_board(ticBoard)
-print(f"{winner} Wins this round")
+
+print("How many Games would you love to play....")
+game_turns = int(input())
+try:
+    for i in range(game_turns):
+        turn = random.choice(["X", "O"])
+        for num in range(9):
+            print_board(ticBoard)
+            print(f"""Turn for {turn}. You are allowed to pick a space to move to.
+                They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)
+                mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)
+                low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) """)
+            move = input("MOve to which space: ")
+            ticBoard[move] = turn
+            if turn == "X":
+                turn = "O"
+            else:
+                turn = "X"
+
+            winner(ticBoard)
+            break
+
+        print_board(ticBoard)
+        print(f"{winner} Wins this round")
+except ValueError:
+    print("You are")
