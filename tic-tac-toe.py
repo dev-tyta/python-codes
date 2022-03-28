@@ -36,6 +36,7 @@ print("How many Games would you love to play....")
 game_turns = int(input())
 try:
     for i in range(game_turns):
+        score_board()
         turn = random.choice(["X", "O"])
         for num in range(9):
             print_board(ticBoard)
@@ -43,8 +44,8 @@ try:
                 They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)
                 mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)
                 low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) """)
-            move = input("MOve to which space: ")
-            ticBoard[move] = turn
+            move = input("Move to which space: ")
+            ticBoard.setdefault(move, turn)
             if turn == "X":
                 turn = "O"
             else:
@@ -52,6 +53,14 @@ try:
 
             winner(ticBoard)
             break
+
+        if winner == "X":
+            wins_X += 1
+        elif winner == "O":
+            wins_O += 1
+        else:
+            wins_O = 0
+            wins_X = 0
 
         print_board(ticBoard)
         print(f"{winner} Wins this round")
