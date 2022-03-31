@@ -21,17 +21,6 @@ def score_board():
     print(f"X : {wins_X}  |  O: {wins_O}")
 
 
-def winner(board):
-    if board["top_L"] == board["top_M"] == board["top_R"] != " ":
-        winner = board["top_L"]
-    elif board["mid_L"] == board["mid_M"] == board["mid_R"] != " ":
-        winner = board["mid_L"]
-    elif board["low_L"] == board["low_M"] == board["low_R"] != " ":
-        winner = board["low_L"]
-    else:
-        print("No winner!! Replay")
-
-
 print("How many Games would you love to play....")
 game_turns = int(input())
 try:
@@ -45,14 +34,36 @@ try:
                 mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)
                 low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) """)
             move = input("Move to which space: ")
-            ticBoard.setdefault(move, turn)
+            ticBoard[move] = turn
             if turn == "X":
                 turn = "O"
             else:
                 turn = "X"
 
-            winner(ticBoard)
-            break
+            if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
+                winner = ticBoard["top_L"]
+                break
+            elif ticBoard["mid_L"] == ticBoard["mid_M"] == ticBoard["mid_R"] != " ":
+                winner = ticBoard["mid_L"]
+                break
+            elif ticBoard["low_L"] == ticBoard["low_M"] == ticBoard["low_R"] != " ":
+                winner = ticBoard["low_L"]
+                break
+            elif ticBoard["top_L"] == ticBoard["mid_L"] == ticBoard["low_L"] != " ":
+                winner = ticBoard["top_L"]
+                break
+            elif ticBoard["top_M"] == ticBoard["mid_M"] == ticBoard["low_M"] != " ":
+                winner = ticBoard["top_M"]
+                break
+            elif ticBoard["low_R"] == ticBoard["top_R"] == ticBoard["mid_R"] != " ":
+                winner = ticBoard["top_R"]
+                break
+            elif ticBoard["top_L"] == ticBoard["mid_M"] == ticBoard["low_R"] != " ":
+                winner = ticBoard["top_L"]
+                break
+            elif ticBoard["low_L"] == ticBoard["mid_M"] == ticBoard["top_R"] != " ":
+                winner = ticBoard["top_L"]
+                break
 
         if winner == "X":
             wins_X += 1
@@ -64,5 +75,10 @@ try:
 
         print_board(ticBoard)
         print(f"{winner} Wins this round")
+        score_board()
+        ticBoard = {'top_L': " ", 'top_M': " ", 'top_R': " ",
+                    'mid_L': " ", 'mid_M': " ", 'mid_R': " ",
+                    'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
+
 except ValueError:
-    print("You are")
+    print("Input A number")
