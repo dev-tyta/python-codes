@@ -4,6 +4,7 @@ ticBoard = {'top_L': " ", 'top_M': " ", 'top_R': " ",
             'mid_L': " ", 'mid_M': " ", 'mid_R': " ",
             'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
 
+
 wins_X = 0
 wins_O = 0
 
@@ -50,41 +51,43 @@ try:
                          mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)
                          low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) """)
                 move = input("Move to which space: ")
+                ticBoard[move] = turn
+                post = list(ticBoard.keys())
+                post.remove(move)
                 rand_comp = random.choice(["X", "O"])
                 if rand_comp == turn:
-                    post = list(ticBoard.keys())
                     comp_post = random.choice(post)
-                    ticBoard.pop(comp_post)
-                ticBoard[move] = turn
+                    post.remove(comp_post)
+                ticBoard[comp_post] = turn
                 if turn == "X":
                     turn = "O"
                 else:
                     turn = "X"
 
-            if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
-                winner = ticBoard["top_L"]
-                break
-            elif ticBoard["mid_L"] == ticBoard["mid_M"] == ticBoard["mid_R"] != " ":
-                winner = ticBoard["mid_L"]
-                break
-            elif ticBoard["low_L"] == ticBoard["low_M"] == ticBoard["low_R"] != " ":
-                winner = ticBoard["low_L"]
-                break
-            elif ticBoard["top_L"] == ticBoard["mid_L"] == ticBoard["low_L"] != " ":
-                winner = ticBoard["top_L"]
-                break
-            elif ticBoard["top_M"] == ticBoard["mid_M"] == ticBoard["low_M"] != " ":
-                winner = ticBoard["top_M"]
-                break
-            elif ticBoard["low_R"] == ticBoard["top_R"] == ticBoard["mid_R"] != " ":
-                winner = ticBoard["top_R"]
-                break
-            elif ticBoard["top_L"] == ticBoard["mid_M"] == ticBoard["low_R"] != " ":
-                winner = ticBoard["top_L"]
-                break
-            elif ticBoard["low_L"] == ticBoard["mid_M"] == ticBoard["top_R"] != " ":
-                winner = ticBoard["top_L"]
-                break
+                if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
+                    winner = ticBoard["top_L"]
+                    break
+                elif ticBoard["mid_L"] == ticBoard["mid_M"] == ticBoard["mid_R"] != " ":
+                    winner = ticBoard["mid_L"]
+                    break
+                elif ticBoard["low_L"] == ticBoard["low_M"] == ticBoard["low_R"] != " ":
+                    winner = ticBoard["low_L"]
+                    break
+                elif ticBoard["top_L"] == ticBoard["mid_L"] == ticBoard["low_L"] != " ":
+                    winner = ticBoard["top_L"]
+                    break
+                elif ticBoard["top_M"] == ticBoard["mid_M"] == ticBoard["low_M"] != " ":
+                    winner = ticBoard["top_M"]
+                    break
+                elif ticBoard["low_R"] == ticBoard["top_R"] == ticBoard["mid_R"] != " ":
+                    winner = ticBoard["top_R"]
+                    break
+                elif ticBoard["top_L"] == ticBoard["mid_M"] == ticBoard["low_R"] != " ":
+                    winner = ticBoard["top_L"]
+                    break
+                elif ticBoard["low_L"] == ticBoard["mid_M"] == ticBoard["top_R"] != " ":
+                    winner = ticBoard["top_L"]
+                    break
 
             if winner == "X":
                 wins_X += 1
