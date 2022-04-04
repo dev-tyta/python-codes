@@ -4,8 +4,8 @@ ticBoard = {'top_L': " ", 'top_M': " ", 'top_R': " ",
             'mid_L': " ", 'mid_M': " ", 'mid_R': " ",
             'low_L': ' ', 'low_M': ' ', 'low_R': ' '}  # represents tic-tac-toe table
 
-wins_X = 0
-wins_O = 0
+wins_X = 0  # default point for X
+wins_O = 0  # default point for O
 
 
 def print_board(board):  # prints selected board out
@@ -22,30 +22,33 @@ def score_board():  # records score during game.
 
 
 print("Multiplayer or Single PLayer:(If Multiplayer input M, else input S for SinglePlayer.)")
-player_choice = input()  # gets input to know if player would play multiplayer or single-player.
+player_choice = input().upper()  # gets input to know if player would play multiplayer or single-player.
 print("How many Games would you love to play....")
 game_turns = int(input())  # collects number of game player(s) would love to play.
 try:
     for i in range(game_turns):  # carries out a loop depending on the number of times players would like to play.
         score_board()
-        if player_choice == "M":
+        if player_choice == "M":  # if a player decides to play a multiplayer game.
             turn = random.choice(["X", "O"])  # automatically selects a key for players
-            for num in range(9):
+            post = list(ticBoard.keys())  # available positions.
+            for num in range(9):  # carries out loop till someone wins.
                 print_board(ticBoard)
                 print(f"""Turn for {turn}. You are allowed to pick a space to move to.
                      They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)
                      mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)
                      low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) """)
-                move = input("Move to which space: ")
-                ticBoard[move] = turn
-                if turn == "X":
+                print(f"Available Positions are {post} ")  # prints out the available position where players can play.
+                move = input("Move to which space: ")  # collects an input of position where players would love to play
+                ticBoard[move] = turn  # assigns players key to the position chosen
+                post.remove(move)  # removes the position that has been used.
+                if turn == "X":  # alternates to next player
                     turn = "O"
                 else:
                     turn = "X"
-        elif player_choice == "S":
-            turn = "X"
-            post = list(ticBoard.keys())
-            for num in range(4):
+        elif player_choice == "S":  # if player which to play a single player game.
+            turn = "X"  # player is automatically assigned X
+            post = list(ticBoard.keys())  # same as shown above
+            for num in range(4):  # carries out loop 4 times since the player is playing against an automatic computer
                 print_board(ticBoard)
                 print(f"""Turn for {turn}. You are allowed to pick a space to move to.
                          They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)
@@ -56,14 +59,15 @@ try:
                 ticBoard[move] = turn
                 post.remove(move)
                 if turn == "X":
-                    comp_turn = "O"
+                    comp_turn = "O"  # assigns computer a key
                 else:
                     comp_turn = "X"
-                comp_post = random.choice(post)
+                comp_post = random.choice(post)  # allows the computer randomly picks a position.
                 post.remove(comp_post)
-                ticBoard[comp_post] = comp_turn
+                ticBoard[comp_post] = comp_turn  # computer key is assigned to the selected position
                 print_board(ticBoard)
 
+                # Laws that determines the winner.
                 if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
                     winner = ticBoard["top_L"]
                     break
@@ -89,7 +93,7 @@ try:
                     winner = ticBoard["top_L"]
                     break
 
-        if winner == "X":
+        if winner == "X":  # if winner is X, a point is added to point won.
             wins_X += 1
         elif winner == "O":
             wins_O += 1
