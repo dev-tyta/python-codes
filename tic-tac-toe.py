@@ -14,7 +14,7 @@ def print_board(board):
     print("-+-+-")
     print(board["mid_L"] + '|' + board['mid_M'] + '|' + board['mid_R'])
     print("-+-+-")
-    print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'])
+    print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'] + "\n")
 
 
 def score_board():
@@ -45,15 +45,16 @@ try:
                     turn = "X"
         elif player_choice == "S":
             turn = random.choice(["X", "O"])
+            post = list(ticBoard.keys())
             for num in range(4):
                 print_board(ticBoard)
                 print(f"""Turn for {turn}. You are allowed to pick a space to move to.
                          They are top_L(Top Left Corner), top_M(Top Middle Space), top_R(Top Right Corner)
                          mid_L (Middle Left Space), mid_M(Middle Space), mid_R(Middle Right Space)
                          low_L(Bottom Left Corner), low_M(Bottom Middle Space), low_R(Bottom Right Corner) """)
+                print(f"Available Positions are {post} ")
                 move = input("Move to which space: ")
                 ticBoard[move] = turn
-                post = list(ticBoard.keys())
                 post.remove(move)
                 if turn == "X":
                     comp_turn = "O"
@@ -62,7 +63,7 @@ try:
                 comp_post = random.choice(post)
                 post.remove(comp_post)
                 ticBoard[comp_post] = comp_turn
-                print_bo
+                print_board(ticBoard)
 
                 if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
                     winner = ticBoard["top_L"]
