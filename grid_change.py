@@ -1,13 +1,14 @@
-# import pprint
-
-# message = 'It was a bright cold day in April, and the clocks were striking ' \
-#          'thirteen.'
-# count = {"f": 9, "jo": 90}
+# inventory.py
+stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
 
 
-# for character in message:
-#    count.setdefault(character, 0)
-#    count[character] = count[character] + 1
+def display_inventory(inventory):
+    print("Inventory:")
+    item_total = 0
+    for k, v in inventory.items():
+        print(f"{v} {k}")
+        item_total += v
+    print("Total number of items: " + str(item_total))
 
 
-# print(pprint.pformat(count))
+display_inventory(stuff)
