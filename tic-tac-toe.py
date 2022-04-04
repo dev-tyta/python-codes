@@ -95,9 +95,9 @@ try:
 
         if winner == "X":  # if winner is X, a point is added to point won.
             wins_X += 1
-        elif winner == "O":
+        elif winner == "O":  # if winner is O, a point is added to point won.
             wins_O += 1
-        else:
+        else:  # in the case of a draw, no point is added
             wins_O = 0
             wins_X = 0
 
@@ -109,8 +109,8 @@ try:
         score_board()
         ticBoard = {'top_L': " ", 'top_M': " ", 'top_R': " ",
                     'mid_L': " ", 'mid_M': " ", 'mid_R': " ",
-                    'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
-    if wins_X > wins_O:
+                    'low_L': ' ', 'low_M': ' ', 'low_R': ' '}  # assigns an empty board for a new game.
+    if wins_X > wins_O:  # shows final winner of the game or if it ends up in a tie.
         print(f"X wins with {wins_X} points")
     elif wins_O > wins_X:
         print(f"O wins with {wins_O} points")
@@ -119,5 +119,5 @@ try:
     else:
         print("Unknown possibility")
 
-except ValueError:
+except ValueError:  # returns error when a number is not written.
     print("Input A number")
