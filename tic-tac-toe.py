@@ -29,8 +29,8 @@ game_turns = int(input())
 try:
     for i in range(game_turns):
         score_board()
-        turn = random.choice(["X", "O"])
         if player_choice == "M":
+            turn = random.choice(["X", "O"])
             for num in range(9):
                 print_board(ticBoard)
                 print(f"""Turn for {turn}. You are allowed to pick a space to move to.
@@ -44,6 +44,7 @@ try:
                 else:
                     turn = "X"
         elif player_choice == "S":
+            turn = random.choice(["X", "O"])
             for num in range(4):
                 print_board(ticBoard)
                 print(f"""Turn for {turn}. You are allowed to pick a space to move to.
@@ -54,15 +55,14 @@ try:
                 ticBoard[move] = turn
                 post = list(ticBoard.keys())
                 post.remove(move)
-                rand_comp = random.choice(["X", "O"])
-                if rand_comp == turn:
-                    comp_post = random.choice(post)
-                    post.remove(comp_post)
-                ticBoard[comp_post] = turn
                 if turn == "X":
-                    turn = "O"
+                    comp_turn = "O"
                 else:
-                    turn = "X"
+                    comp_turn = "X"
+                comp_post = random.choice(post)
+                post.remove(comp_post)
+                ticBoard[comp_post] = comp_turn
+                print_bo
 
                 if ticBoard["top_L"] == ticBoard["top_M"] == ticBoard["top_R"] != " ":
                     winner = ticBoard["top_L"]
