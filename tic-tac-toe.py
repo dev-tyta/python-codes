@@ -44,7 +44,7 @@ try:
                 else:
                     turn = "X"
         elif player_choice == "S":
-            turn = random.choice(["X", "O"])
+            turn = "X"
             post = list(ticBoard.keys())
             for num in range(4):
                 print_board(ticBoard)
@@ -90,20 +90,31 @@ try:
                     winner = ticBoard["top_L"]
                     break
 
-            if winner == "X":
-                wins_X += 1
-            elif winner == "O":
-                wins_O += 1
-            else:
-                wins_O = 0
-                wins_X = 0
+        if winner == "X":
+            wins_X += 1
+        elif winner == "O":
+            wins_O += 1
+        else:
+            wins_O = 0
+            wins_X = 0
 
         print_board(ticBoard)
-        print(f"{winner} Wins this round")
+        if wins_O or wins_X >= 1:
+            print(f"{winner} Wins this round")
+        else:
+            print("There is a tie....")
         score_board()
         ticBoard = {'top_L': " ", 'top_M': " ", 'top_R': " ",
                     'mid_L': " ", 'mid_M': " ", 'mid_R': " ",
                     'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
+    if wins_X > wins_O:
+        print(f"X wins with {wins_X} points")
+    elif wins_O > wins_X:
+        print(f"O wins with {wins_O} points")
+    elif wins_O == wins_X:
+        print("The Game ended a Draw...")
+    else:
+        print("Unknown possibility")
 
 except ValueError:
     print("Input A number")
