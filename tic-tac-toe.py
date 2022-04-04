@@ -1,15 +1,14 @@
-import random
+import random  # importing libraries
 
 ticBoard = {'top_L': " ", 'top_M': " ", 'top_R': " ",
             'mid_L': " ", 'mid_M': " ", 'mid_R': " ",
-            'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
-
+            'low_L': ' ', 'low_M': ' ', 'low_R': ' '}  # represents tic-tac-toe table
 
 wins_X = 0
 wins_O = 0
 
 
-def print_board(board):
+def print_board(board):  # prints selected board out
     print(board['top_L'] + '|' + board['top_M'] + '|' + board['top_R'])
     print("-+-+-")
     print(board["mid_L"] + '|' + board['mid_M'] + '|' + board['mid_R'])
@@ -17,20 +16,20 @@ def print_board(board):
     print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'] + "\n")
 
 
-def score_board():
+def score_board():  # records score during game.
     print("Score Board")
     print(f"X : {wins_X}  |  O: {wins_O}")
 
 
 print("Multiplayer or Single PLayer:(If Multiplayer input M, else input S for SinglePlayer.)")
-player_choice = input()
+player_choice = input()  # gets input to know if player would play multiplayer or single-player.
 print("How many Games would you love to play....")
-game_turns = int(input())
+game_turns = int(input())  # collects number of game player(s) would love to play.
 try:
-    for i in range(game_turns):
+    for i in range(game_turns):  # carries out a loop depending on the number of times players would like to play.
         score_board()
         if player_choice == "M":
-            turn = random.choice(["X", "O"])
+            turn = random.choice(["X", "O"])  # automatically selects a key for players
             for num in range(9):
                 print_board(ticBoard)
                 print(f"""Turn for {turn}. You are allowed to pick a space to move to.
