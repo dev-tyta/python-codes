@@ -42,3 +42,15 @@ def pig(mess):
         pig_latin.append(prefix_non_letters + word + suffix_non_letters)
 
     print(" ".join(pig_latin))
+
+
+def english(mess):
+    eng = []
+    for word in mess.split():
+        while len(word) > 0 and word.endswith("yay"):
+            word = word[:-3]
+
+        while len(word) > 0 and not word[-2] in vowels:
+            word = word[-2] + word[:-2]
+
+        while len(word) > 0 and
