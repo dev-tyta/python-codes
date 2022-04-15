@@ -41,7 +41,8 @@ def pig(mess):
 
         pig_latin.append(prefix_non_letters + word + suffix_non_letters)
 
-    print(" ".join(pig_latin))
+    pig_sent = " ".join(pig_latin)
+    print(pig_sent)
 
 
 def english(mess):
@@ -53,4 +54,12 @@ def english(mess):
         while len(word) > 0 and not word[-2] in vowels:
             word = word[-2] + word[:-2]
 
-        while len(word) > 0 and
+        while len(word) > 0 and word[0].isnumeric():
+            word = word
+
+        eng.append(word)
+        eng_word = " ".join(eng)
+    print(eng_word)
+
+
+english(message)
